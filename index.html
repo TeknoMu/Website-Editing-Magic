@@ -3,222 +3,183 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Editing Magic — Professional Video Editing</title>
-  <meta name="description" content="Cinematic video editing, color grading, motion design — professional post-production services." />
+  <title>Editing Magic — Pro Video Editor</title>
+  <meta name="description" content="Professional video editing services. Cinematic cuts, motion graphics, color grading — turning raw footage into visual masterpieces." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Orbitron:wght@700;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
     body, html {
       height: 100%;
+      overflow: hidden;
       background: #000;
-      color: #e0e0e0;
-      font-family: 'Inter', sans-serif;
-      overflow-x: hidden;
+      font-family: 'Roboto Mono', monospace;
+      color: #0f0;
     }
     canvas {
       position: fixed;
       top: 0; left: 0;
       z-index: 1;
-      opacity: 0.25; /* subtle professional look */
     }
-    .container {
+    .content {
       position: relative;
       z-index: 10;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 4rem 6rem;
-    }
-    .hero {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
       align-items: center;
+      text-align: center;
+      padding: 2rem;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.8));
     }
     h1 {
       font-family: 'Orbitron', sans-serif;
-      font-size: clamp(4.5rem, 10vw, 9rem);
+      font-size: clamp(3rem, 12vw, 9rem);
       font-weight: 900;
+      color: #00ff41;
+      text-shadow: 0 0 20px #00ff41, 0 0 40px #00ff41;
+      margin-bottom: 1rem;
+      letter-spacing: 0.1em;
+      animation: glitch 4s infinite;
+    }
+    h2 {
+      font-size: clamp(1.5rem, 5vw, 3rem);
+      color: #00cc33;
+      margin-bottom: 2rem;
+      text-shadow: 0 0 15px #00cc33;
+    }
+    p.tagline {
+      font-size: 1.4rem;
+      max-width: 800px;
+      margin-bottom: 3rem;
       color: #00ff9d;
-      text-shadow: 0 0 30px rgba(0, 255, 157, 0.5);
-      letter-spacing: 0.08em;
-      line-height: 0.95;
+      line-height: 1.6;
     }
-    .subtitle {
-      font-size: clamp(1.4rem, 3vw, 2.2rem);
-      font-weight: 400;
-      color: #a0a0a0;
-      max-width: 500px;
-      margin-top: 1.5rem;
-    }
-    .film-strip {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 140px;
-      overflow: hidden;
-      z-index: 5;
-      pointer-events: none;
-      background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
-    }
-    .reel {
+    .services {
       display: flex;
-      width: 300%;
-      height: 100%;
-      animation: scrollFilm 10s linear infinite;
-    }
-    .frame {
-      flex: 0 0 20%;
-      height: 100%;
-      background: #111;
-      border: 2px solid #333;
-      margin: 0 1%;
-      display: flex;
-      align-items: center;
+      flex-wrap: wrap;
       justify-content: center;
-      font-size: 1.2rem;
-      color: #444;
-      overflow: hidden;
+      gap: 2rem;
+      margin-bottom: 4rem;
     }
-    .frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.7;
+    .card {
+      background: rgba(0, 255, 0, 0.08);
+      border: 1px solid #00ff41;
+      border-radius: 12px;
+      padding: 1.8rem;
+      width: 280px;
+      backdrop-filter: blur(6px);
+      transition: all 0.4s;
     }
-    @keyframes scrollFilm {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-33.33%); } /* loops seamlessly with 300% width */
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 30px #00ff41;
     }
-    form {
-      background: rgba(20, 20, 20, 0.7);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(0, 255, 157, 0.15);
-      border-radius: 16px;
-      padding: 2.5rem;
-      max-width: 480px;
-      margin-left: auto;
+    .card h3 {
+      color: #00ff41;
+      margin-bottom: 1rem;
     }
-    label {
-      display: block;
-      margin-bottom: 0.6rem;
-      font-size: 0.95rem;
-      color: #ccc;
-    }
-    input, textarea {
-      width: 100%;
-      padding: 1rem;
-      margin-bottom: 1.4rem;
-      background: #111;
-      border: 1px solid #333;
-      border-radius: 8px;
-      color: #eee;
-      font-family: inherit;
-      font-size: 1rem;
-    }
-    input:focus, textarea:focus {
-      outline: none;
-      border-color: #00ff9d;
-      box-shadow: 0 0 0 3px rgba(0, 255, 157, 0.2);
-    }
-    button {
-      width: 100%;
-      padding: 1.2rem;
-      background: #00ff9d;
-      color: #000;
-      border: none;
-      border-radius: 8px;
-      font-size: 1.1rem;
-      font-weight: 600;
+    .cta {
+      font-size: 1.5rem;
+      padding: 1rem 3rem;
+      background: transparent;
+      border: 2px solid #00ff41;
+      color: #00ff41;
+      font-weight: bold;
       cursor: pointer;
       transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
     }
-    button:hover {
-      background: #00e088;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(0, 255, 157, 0.4);
+    .cta:hover {
+      background: #00ff41;
+      color: #000;
+      box-shadow: 0 0 25px #00ff41;
     }
-    @media (max-width: 1024px) {
-      .hero { grid-template-columns: 1fr; }
-      form { margin: 3rem auto 0; max-width: 100%; }
-      .container { padding: 3rem 2rem; }
+    @keyframes glitch {
+      0% { text-shadow: 2px 0 #ff00aa, -2px 0 #00ffff; }
+      10% { text-shadow: -2px 0 #ff00aa, 2px 0 #00ffff; }
+      20% { text-shadow: 0 0 #ff00aa; }
+      100% { text-shadow: 2px 0 #ff00aa, -2px 0 #00ffff; }
+    }
+    @media (max-width: 768px) {
+      .services { flex-direction: column; align-items: center; }
     }
   </style>
 </head>
 <body>
   <canvas id="c"></canvas>
 
-  <div class="container">
-    <div class="hero">
-      <div>
-        <h1>EDITING MAGIC</h1>
-        <div class="subtitle">
-          Professional video editing • Cinematic grading • Motion design
-        </div>
+  <div class="content">
+    <h1>EDITING MAGIC</h1>
+    <h2>Pro Video Editor & Motion Designer</h2>
+    <p class="tagline">
+      Cinematic storytelling • Color grading mastery • VFX integration • Fast-turnaround reels & commercials.<br>
+      Transforming raw footage into high-impact visual experiences.
+    </p>
+
+    <div class="services">
+      <div class="card">
+        <h3>Commercial & Ads</h3>
+        <p>Polished brand videos with dynamic pacing and neon-grade aesthetics.</p>
       </div>
-
-      <form action="https://formspree.io/f/your-form-id-here" method="POST">
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" required placeholder="Your name" />
-
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required placeholder="your@email.com" />
-
-        <label for="message">Project details</label>
-        <textarea id="message" name="message" rows="5" required placeholder="Tell me about your footage and vision..."></textarea>
-
-        <button type="submit">Send Inquiry</button>
-      </form>
+      <div class="card">
+        <h3>Music Videos & Reels</h3>
+        <p>Sync-perfect edits, glitch effects, cyberpunk vibes for TikTok/YouTube/Instagram.</p>
+      </div>
+      <div class="card">
+        <h3>Short Films & Trailers</h3>
+        <p>Dramatic cuts, emotional grading, sound design integration.</p>
+      </div>
     </div>
-  </div>
 
-  <div class="film-strip">
-    <div class="reel">
-      <div class="frame"><img src="https://images.unsplash.com/photo-1607434472256-2d730a8e29e9?w=800" alt="Film frame 1" /></div>
-      <div class="frame"><img src="https://images.unsplash.com/photo-1535014496915-2c4d33630c46?w=800" alt="Film frame 2" /></div>
-      <div class="frame"><img src="https://images.unsplash.com/photo-1607604056989-4d9d6d8d4b9d?w=800" alt="Film frame 3" /></div>
-      <div class="frame"><img src="https://images.unsplash.com/photo-1617791160505-6f00504e3519?w=800" alt="Film frame 4" /></div>
-      <div class="frame"><img src="https://images.unsplash.com/photo-1607434472256-2d730a8e29e9?w=800" alt="Film frame 5" /></div> <!-- repeat for seamless loop -->
-    </div>
+    <a href="mailto:your@email.com?subject=Video%20Project%20Inquiry" class="cta">START YOUR PROJECT →</a>
   </div>
 
   <script>
-    // Subtle Matrix rain
+    // Matrix Digital Rain - classic green rain
     const canvas = document.getElementById('c');
     const ctx = canvas.getContext('2d');
+
     canvas.height = window.innerHeight;
     canvas.width = window.innerWidth;
+
     window.addEventListener('resize', () => {
       canvas.height = window.innerHeight;
       canvas.width = window.innerWidth;
     });
 
-    const matrix = "01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン".split("");
-    const fontSize = 16;
+    const matrix = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}".split("");
+    const fontSize = 14;
     const columns = canvas.width / fontSize;
-    const drops = Array(Math.floor(columns)).fill(1);
+    const drops = [];
+
+    for (let x = 0; x < columns; x++) drops[x] = 1;
 
     function draw() {
-      ctx.fillStyle = 'rgba(0,0,0,0.04)';
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = '#00ff9d';
-      ctx.font = `${fontSize}px monospace`;
 
-      drops.forEach((y, i) => {
+      ctx.fillStyle = '#0f0'; // classic matrix green
+      ctx.font = fontSize + 'px monospace';
+
+      for (let i = 0; i < drops.length; i++) {
         const text = matrix[Math.floor(Math.random() * matrix.length)];
         const x = i * fontSize;
-        ctx.fillText(text, x, y * fontSize);
-        if (y * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+        const y = drops[i] * fontSize;
+
+        ctx.fillText(text, x, y);
+
+        if (y > canvas.height && Math.random() > 0.975)
+          drops[i] = 0;
+
         drops[i]++;
-      });
+      }
     }
-    setInterval(draw, 80); // slower for professionalism
+
+    setInterval(draw, 35);
   </script>
 </body>
 </html>
