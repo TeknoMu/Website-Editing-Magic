@@ -1,26 +1,185 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Editing Magic — Pro Video Editor</title>
+  <meta name="description" content="Professional video editing services. Cinematic cuts, motion graphics, color grading — turning raw footage into visual masterpieces." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body, html {
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+      font-family: 'Roboto Mono', monospace;
+      color: #0f0;
+    }
+    canvas {
+      position: fixed;
+      top: 0; left: 0;
+      z-index: 1;
+    }
+    .content {
+      position: relative;
+      z-index: 10;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.8));
+    }
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(3rem, 12vw, 9rem);
+      font-weight: 900;
+      color: #00ff41;
+      text-shadow: 0 0 20px #00ff41, 0 0 40px #00ff41;
+      margin-bottom: 1rem;
+      letter-spacing: 0.1em;
+      animation: glitch 4s infinite;
+    }
+    h2 {
+      font-size: clamp(1.5rem, 5vw, 3rem);
+      color: #00cc33;
+      margin-bottom: 2rem;
+      text-shadow: 0 0 15px #00cc33;
+    }
+    p.tagline {
+      font-size: 1.4rem;
+      max-width: 800px;
+      margin-bottom: 3rem;
+      color: #00ff9d;
+      line-height: 1.6;
+    }
+    .services {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+    .card {
+      background: rgba(0, 255, 0, 0.08);
+      border: 1px solid #00ff41;
+      border-radius: 12px;
+      padding: 1.8rem;
+      width: 280px;
+      backdrop-filter: blur(6px);
+      transition: all 0.4s;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 30px #00ff41;
+    }
+    .card h3 {
+      color: #00ff41;
+      margin-bottom: 1rem;
+    }
+    .cta {
+      font-size: 1.5rem;
+      padding: 1rem 3rem;
+      background: transparent;
+      border: 2px solid #00ff41;
+      color: #00ff41;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .cta:hover {
+      background: #00ff41;
+      color: #000;
+      box-shadow: 0 0 25px #00ff41;
+    }
+    @keyframes glitch {
+      0% { text-shadow: 2px 0 #ff00aa, -2px 0 #00ffff; }
+      10% { text-shadow: -2px 0 #ff00aa, 2px 0 #00ffff; }
+      20% { text-shadow: 0 0 #ff00aa; }
+      100% { text-shadow: 2px 0 #ff00aa, -2px 0 #00ffff; }
+    }
+    @media (max-width: 768px) {
+      .services { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="c"></canvas>
 
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-    <title>Video Editor Portfolio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Orbitron:wght@400;700;900&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet" />
-    <meta name="description" content="Professional video editing portfolio - High-tech, dynamic video editing services" />
-    <meta name="theme-color" content="#0a0a0a" />
-  </head>
+  <div class="content">
+    <h1>EDITING MAGIC</h1>
+    <h2>Pro Video Editor & Motion Designer</h2>
+    <p class="tagline">
+      Cinematic storytelling • Color grading mastery • VFX integration • Fast-turnaround reels & commercials.<br>
+      Transforming raw footage into high-impact visual experiences.
+    </p>
 
-  <body class="scanlines">
-    <div id="root" class="min-h-screen"></div>
-    <script type="module" src="/src/main.tsx"></script>
-    <script
-      defer
-      src="%VITE_ANALYTICS_ENDPOINT%/umami"
-      data-website-id="%VITE_ANALYTICS_WEBSITE_ID%"></script>
-  </body>
+    <div class="services">
+      <div class="card">
+        <h3>Commercial & Ads</h3>
+        <p>Polished brand videos with dynamic pacing and neon-grade aesthetics.</p>
+      </div>
+      <div class="card">
+        <h3>Music Videos & Reels</h3>
+        <p>Sync-perfect edits, glitch effects, cyberpunk vibes for TikTok/YouTube/Instagram.</p>
+      </div>
+      <div class="card">
+        <h3>Short Films & Trailers</h3>
+        <p>Dramatic cuts, emotional grading, sound design integration.</p>
+      </div>
+    </div>
 
+    <a href="mailto:your@email.com?subject=Video%20Project%20Inquiry" class="cta">START YOUR PROJECT →</a>
+  </div>
+
+  <script>
+    // Matrix Digital Rain - classic green rain
+    const canvas = document.getElementById('c');
+    const ctx = canvas.getContext('2d');
+
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+
+    window.addEventListener('resize', () => {
+      canvas.height = window.innerHeight;
+      canvas.width = window.innerWidth;
+    });
+
+    const matrix = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}".split("");
+    const fontSize = 14;
+    const columns = canvas.width / fontSize;
+    const drops = [];
+
+    for (let x = 0; x < columns; x++) drops[x] = 1;
+
+    function draw() {
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = '#0f0'; // classic matrix green
+      ctx.font = fontSize + 'px monospace';
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = matrix[Math.floor(Math.random() * matrix.length)];
+        const x = i * fontSize;
+        const y = drops[i] * fontSize;
+
+        ctx.fillText(text, x, y);
+
+        if (y > canvas.height && Math.random() > 0.975)
+          drops[i] = 0;
+
+        drops[i]++;
+      }
+    }
+
+    setInterval(draw, 35);
+  </script>
+</body>
 </html>
