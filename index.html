@@ -21,7 +21,7 @@
       position: fixed;
       top: 0; left: 0;
       z-index: 1;
-      opacity: 0.25; /* subtle professional look */
+      opacity: 0.22;
     }
     .container {
       position: relative;
@@ -30,31 +30,29 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 4rem 6rem;
+      padding: 4rem 2rem;
     }
     .hero {
-      max-width: 1200px;
+      max-width: 1100px;
       margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
+      text-align: center;
     }
     h1 {
       font-family: 'Orbitron', sans-serif;
-      font-size: clamp(4.5rem, 10vw, 9rem);
+      font-size: clamp(4.5rem, 11vw, 10rem);
       font-weight: 900;
       color: #00ff9d;
-      text-shadow: 0 0 30px rgba(0, 255, 157, 0.5);
-      letter-spacing: 0.08em;
-      line-height: 0.95;
+      text-shadow: 0 0 35px rgba(0, 255, 157, 0.45);
+      letter-spacing: 0.06em;
+      line-height: 0.92;
+      margin-bottom: 1.2rem;
     }
     .subtitle {
-      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      font-size: clamp(1.4rem, 3.5vw, 2.1rem);
       font-weight: 400;
-      color: #a0a0a0;
-      max-width: 500px;
-      margin-top: 1.5rem;
+      color: #b0b0b0;
+      max-width: 680px;
+      margin: 0 auto;
     }
     .film-strip {
       position: fixed;
@@ -65,7 +63,7 @@
       overflow: hidden;
       z-index: 5;
       pointer-events: none;
-      background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+      background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, transparent 100%);
     }
     .reel {
       display: flex;
@@ -77,33 +75,30 @@
       flex: 0 0 20%;
       height: 100%;
       background: #111;
-      border: 2px solid #333;
-      margin: 0 1%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      color: #444;
+      border: 2px solid #2a2a2a;
+      margin: 0 0.8%;
       overflow: hidden;
     }
     .frame img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.7;
+      opacity: 0.75;
+      transition: opacity 0.4s;
     }
+    .frame:hover img { opacity: 0.95; }
     @keyframes scrollFilm {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-33.33%); } /* loops seamlessly with 300% width */
+      0%   { transform: translateX(0);    }
+      100% { transform: translateX(-33.33%); }
     }
     form {
-      background: rgba(20, 20, 20, 0.7);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(0, 255, 157, 0.15);
+      background: rgba(18, 18, 18, 0.75);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(0, 255, 157, 0.12);
       border-radius: 16px;
       padding: 2.5rem;
-      max-width: 480px;
-      margin-left: auto;
+      max-width: 460px;
+      margin: 3.5rem auto 0;
     }
     label {
       display: block;
@@ -115,8 +110,8 @@
       width: 100%;
       padding: 1rem;
       margin-bottom: 1.4rem;
-      background: #111;
-      border: 1px solid #333;
+      background: #0f0f0f;
+      border: 1px solid #2a2a2a;
       border-radius: 8px;
       color: #eee;
       font-family: inherit;
@@ -125,7 +120,7 @@
     input:focus, textarea:focus {
       outline: none;
       border-color: #00ff9d;
-      box-shadow: 0 0 0 3px rgba(0, 255, 157, 0.2);
+      box-shadow: 0 0 0 3px rgba(0, 255, 157, 0.18);
     }
     button {
       width: 100%;
@@ -142,12 +137,11 @@
     button:hover {
       background: #00e088;
       transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(0, 255, 157, 0.4);
+      box-shadow: 0 10px 30px rgba(0, 255, 157, 0.35);
     }
-    @media (max-width: 1024px) {
-      .hero { grid-template-columns: 1fr; }
-      form { margin: 3rem auto 0; max-width: 100%; }
-      .container { padding: 3rem 2rem; }
+    @media (max-width: 900px) {
+      .container { padding: 3rem 1.5rem; }
+      form { padding: 2rem; max-width: 100%; }
     }
   </style>
 </head>
@@ -156,11 +150,9 @@
 
   <div class="container">
     <div class="hero">
-      <div>
-        <h1>EDITING MAGIC</h1>
-        <div class="subtitle">
-          Professional video editing • Cinematic grading • Motion design
-        </div>
+      <h1>EDITING MAGIC</h1>
+      <div class="subtitle">
+        Professional video editing • Cinematic color grading • Motion design
       </div>
 
       <form action="https://formspree.io/f/your-form-id-here" method="POST">
@@ -180,45 +172,51 @@
 
   <div class="film-strip">
     <div class="reel">
-      <div class="frame"><img src="https://images.unsplash.com/photo-1607434472256-2d730a8e29e9?w=800" alt="Film frame 1" /></div>
-      <div class="frame"><img src="https://images.unsplash.com/photo-1535014496915-2c4d33630c46?w=800" alt="Film frame 2" /></div>
-      <div class="frame"><img src="https://images.unsplash.com/photo-1607604056989-4d9d6d8d4b9d?w=800" alt="Film frame 3" /></div>
-      <div class="frame"><img src="https://images.unsplash.com/photo-1617791160505-6f00504e3519?w=800" alt="Film frame 4" /></div>
-      <div class="frame"><img src="https://images.unsplash.com/photo-1607434472256-2d730a8e29e9?w=800" alt="Film frame 5" /></div> <!-- repeat for seamless loop -->
+      <div class="frame"><img src="https://images.unsplash.com/photo-1607604056989-4d9d6d8d4b9d?w=800&auto=format&fit=crop" alt="Cinematic frame" /></div>
+      <div class="frame"><img src="https://images.unsplash.com/photo-1617791160505-6f00504e3519?w=800&auto=format&fit=crop" alt="Film editing" /></div>
+      <div class="frame"><img src="https://images.unsplash.com/photo-1535014496915-2c4d33630c46?w=800&auto=format&fit=crop" alt="Color grading" /></div>
+      <div class="frame"><img src="https://images.unsplash.com/photo-1607434472256-2d730a8e29e9?w=800&auto=format&fit=crop" alt="Motion design" /></div>
+      <div class="frame"><img src="https://images.unsplash.com/photo-1607604056989-4d9d6d8d4b9d?w=800&auto=format&fit=crop" alt="Cinematic frame repeat" /></div>
     </div>
   </div>
 
   <script>
-    // Subtle Matrix rain
+    // Matrix rain – Latin letters + numbers + symbols
     const canvas = document.getElementById('c');
     const ctx = canvas.getContext('2d');
     canvas.height = window.innerHeight;
     canvas.width = window.innerWidth;
+
     window.addEventListener('resize', () => {
       canvas.height = window.innerHeight;
       canvas.width = window.innerWidth;
     });
 
-    const matrix = "01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン".split("");
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*+-=~|".split("");
     const fontSize = 16;
     const columns = canvas.width / fontSize;
     const drops = Array(Math.floor(columns)).fill(1);
 
     function draw() {
-      ctx.fillStyle = 'rgba(0,0,0,0.04)';
+      ctx.fillStyle = 'rgba(0,0,0,0.05)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
+
       ctx.fillStyle = '#00ff9d';
       ctx.font = `${fontSize}px monospace`;
 
       drops.forEach((y, i) => {
-        const text = matrix[Math.floor(Math.random() * matrix.length)];
+        const text = chars[Math.floor(Math.random() * chars.length)];
         const x = i * fontSize;
         ctx.fillText(text, x, y * fontSize);
-        if (y * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+
+        if (y * fontSize > canvas.height && Math.random() > 0.97) {
+          drops[i] = 0;
+        }
         drops[i]++;
       });
     }
-    setInterval(draw, 80); // slower for professionalism
+
+    setInterval(draw, 75); // slightly slower = more readable/professional
   </script>
 </body>
 </html>
